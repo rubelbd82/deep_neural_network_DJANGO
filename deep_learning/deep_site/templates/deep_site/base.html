@@ -1,0 +1,48 @@
+{% load static %}
+<html>
+<head>
+   <title>
+        {% block title %}
+        {{ page_title|default:"Deep learning" }}
+    {% endblock title %}
+   </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="{% static "deep_site/styles.css" %}"/>
+</head>
+
+
+<body>
+<div class="h-100 d-flex  align-items-center justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            {% block content %}
+                <div class="col-10 text-center card" style="background:rgba(255,255,255,0.9); padding: 10px">
+                    <h1 style="font-size:40pt;">Main page</h1>
+                    <p>This is content of the container<br>
+                        second line of text of the container</p>
+                </div>
+            {% endblock content %}
+
+
+
+
+            {% comment %}{% endcomment %}
+        </div>
+    </div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+{% block js_container %}
+
+{% endblock js_container %}
+
+</body>
+
+{% comment %}https://stackoverflow.com/questions/52910348/how-to-vertically-center-content-in-body-using-bootstrap-4{% endcomment %}
+
+</html>

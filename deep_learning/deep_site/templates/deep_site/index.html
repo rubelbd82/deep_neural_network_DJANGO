@@ -1,0 +1,12 @@
+{% extends 'deep_site/base.html' %}
+
+{% block content %}
+    <div class="col-10 text-center card" style="background:rgba(255,255,255,0.9); padding: 10px">
+        <h1 style="font-size:40pt;">Main page</h1>
+        <p>
+            <a href="{% url 'fer' %}" class="btn btn-primary" role="button">Facial Emotion Recognition</a>&nbsp;
+            <a href="#" class="btn btn-primary" role="button">Natural Language Processing</a>&nbsp;
+            <a href="#" class="btn btn-primary" role="button">Video Recognition</a>
+        </p>
+    </div>
+{% endblock content %}

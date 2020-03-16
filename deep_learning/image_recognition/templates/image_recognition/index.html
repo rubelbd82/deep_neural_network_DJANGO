@@ -1,0 +1,76 @@
+{% extends 'deep_site/base.html' %}
+
+{% block content %}
+    <div class="col-10 text-center card transparent-card">
+        <h1>Image recognition</h1>
+        <p>Select an image to recognize</p>
+        <p>
+            <input type="file" id="img" class="file-upload" class="btn btn-primary"  /> <button class="btn btn-primary" id="recognize">Submit</button>
+        </p>
+    </div>
+
+    <div class="col-10 card" style="background:rgba(255,255,255,0.9); padding: 10px; margin-top:10px">
+        <strong>Result:</strong>
+    <pre>
+
+        {
+           "data":{
+              "x":"1",
+              "y":"1",
+              "url":"http://url.com"
+           },
+           "event":"start",
+           "show":1,
+           "id":50
+        }
+    </pre>
+    </div>
+
+
+{% endblock content %}
+
+
+
+{% block js_container %}
+    <script>
+        $( document ).ready(function() {
+            $("form").submit(function(e){
+                {#alert('submit intercepted');#}
+                e.preventDefault(e);
+            });
+
+            $("#recognize").click(function () {
+                var url = "http://127.0.0.1:8000/image_recognition/recognize/";
+                // var data = '{ "Package" : "' + this.id + '", "owl_url" : "' + 'owl_url' + '", "alignment_matcher" : "'+'alignment_matcher'+'" }';
+
+                var data2 = '{ "Package" : "' + this.id + '", "owl_url" : "' + 'owl_url' + '", "alignment_matcher" : "'+'alignment_matcher'+'" }';
+
+                var data = new FormData();
+                var files = $('#img')[0].files[0];
+                data.append('file',files);
+
+                console.log(data);
+
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    headers: {"modelname": "test-value1"},
+                    success: function(response){
+                        console.log("file upload successful")
+                        console.log(response)
+                    }
+                });
+
+
+
+            });
+
+
+
+
+        });
+    </script>
+{% endblock js_container %}
